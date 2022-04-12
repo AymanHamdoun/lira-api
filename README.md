@@ -1,5 +1,4 @@
-![lira-api-logo](https://user-images.githubusercontent.com/21179129/163057489-7ae4ff1b-9f48-4482-9938-dc62f9ffe8a5.png | width=300)
-
+<img src="https://user-images.githubusercontent.com/21179129/163057489-7ae4ff1b-9f48-4482-9938-dc62f9ffe8a5.png" data-canonical-src="https://user-images.githubusercontent.com/21179129/163057489-7ae4ff1b-9f48-4482-9938-dc62f9ffe8a5.png" width="200"/>
 
 # lira-api
 LBP Rate API practice project to learn Kotlin
