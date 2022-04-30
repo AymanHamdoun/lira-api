@@ -2,6 +2,7 @@ package lira.ahamdoun.jobs
 
 import kotlinx.serialization.*
 import kotlinx.serialization.json.Json
+import lira.ahamdoun.utility.Log
 
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
@@ -11,6 +12,7 @@ import java.lang.Exception
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
+import java.util.logging.Level
 
 @Serializable
 data class LiraJobData (
@@ -43,7 +45,12 @@ class LiraRateJob {
             val jobStartDateTime = LocalDateTime.now()
 
             val exchangeRates: MutableList<ExchangeRate> = mutableListOf()
-            exchangeRates.add(getRatesFromLBPRatesWebsite())
+
+            try {
+                exchangeRates.add(getRatesFromLBPRatesWebsite())
+            } catch (e: Exception) {
+                Log.logger?.log(Level.WARNING, e.message)
+            }
 
             val jobData = LiraJobData(
                 jobStartDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),

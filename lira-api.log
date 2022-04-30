@@ -1,0 +1,12 @@
+Apr 30, 2022 6:37:59 PM lira.ahamdoun.ApplicationKt main
+INFO: Application Has Started
+Apr 30, 2022 6:38:00 PM lira.ahamdoun.ApplicationKt$main$1 invokeSuspend
+INFO: JOB: Lira Job STARTED
+Apr 30, 2022 6:38:02 PM lira.ahamdoun.ApplicationKt$main$1 invokeSuspend
+INFO: JOB: Lira Job ENDED
+Apr 30, 2022 7:31:10 PM lira.ahamdoun.ApplicationKt$main$1 invokeSuspend
+INFO: JOB: Lira Job STARTED
+Apr 30, 2022 7:31:11 PM lira.ahamdoun.ApplicationKt$main$1 invokeSuspend
+INFO: JOB: Lira Job ENDED
+Apr 30, 2022 7:36:44 PM lira.ahamdoun.controller.LiraRatesController fillResponseData
+INFO: Had to issue a web call

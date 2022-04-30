@@ -6,10 +6,12 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import lira.ahamdoun.utility.Log
 import java.io.File
 import java.lang.Exception
 import java.time.LocalDateTime
 import java.time.ZoneOffset
+import java.util.logging.Level
 
 @Serializable
 data class ErrorResponse (val status: Int, val message: String)
@@ -50,6 +52,7 @@ class LiraRatesController() {
         if (jobData == null || isOutdatedJobData(jobData)) {
             jobData = LiraRateJob.getAndSaveJobData()
             responseData.source = "Web Call"
+            Log.logger?.log(Level.INFO, "Had to issue a web call")
         }
 
         responseData.data = jobData
