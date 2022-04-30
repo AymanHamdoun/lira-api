@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+
+    container_name: lira-api-container
+
+    volumes:
+      - ./lira-api.log:/app/lira-api.log
+
+    ports:
+      - "8080:8080"
+
+    expose:
+      - 8080
