@@ -31,4 +31,6 @@ dependencies {
 
     implementation("org.jsoup:jsoup:1.12.1")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+
+    implementation("ch.qos.logback:logback-classic:$logback_version")
 }

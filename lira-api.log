@@ -4,3 +4,63 @@ Apr 30, 2022 8:27:33 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSu
 INFO: JOB: Lira Job STARTED
 Apr 30, 2022 8:27:35 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
 INFO: JOB: Lira Job ENDED
+Apr 30, 2022 8:32:35 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job STARTED
+Apr 30, 2022 8:32:36 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job ENDED
+Apr 30, 2022 8:37:36 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job STARTED
+Apr 30, 2022 8:37:37 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job ENDED
+Apr 30, 2022 8:42:37 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job STARTED
+Apr 30, 2022 8:42:38 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job ENDED
+Apr 30, 2022 9:02:57 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job STARTED
+Apr 30, 2022 9:02:59 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job ENDED
+Apr 30, 2022 9:07:59 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job STARTED
+Apr 30, 2022 9:08:00 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job ENDED
+Apr 30, 2022 9:13:00 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job STARTED
+Apr 30, 2022 9:13:01 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job ENDED
+Apr 30, 2022 9:20:05 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job STARTED
+Apr 30, 2022 9:20:06 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job ENDED
+Apr 30, 2022 9:25:06 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job STARTED
+Apr 30, 2022 9:25:07 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job ENDED
+Apr 30, 2022 9:30:07 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job STARTED
+Apr 30, 2022 9:30:11 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job ENDED
+Apr 30, 2022 9:35:11 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job STARTED
+Apr 30, 2022 9:35:12 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job ENDED
+Apr 30, 2022 9:40:12 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job STARTED
+Apr 30, 2022 9:40:14 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job ENDED
+Apr 30, 2022 9:45:14 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job STARTED
+Apr 30, 2022 9:45:15 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job ENDED
+Apr 30, 2022 9:50:15 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job STARTED
+Apr 30, 2022 9:50:16 PM lira.ahamdoun.ApplicationKt$initScheduledJobs$1 invokeSuspend
+INFO: JOB: Lira Job ENDED
+2022-04-30 22:09:53.603 [main] INFO  lira.ahamdoun.utility.Log$Companion - Application Started
+2022-04-30 22:09:53.699 [DefaultDispatcher-worker-1] INFO  lira.ahamdoun.utility.Log$Companion - JOB: Lira Job STARTED
+2022-04-30 22:09:53.806 [main] INFO  ktor.application - Autoreload is disabled because the development mode is off.
+2022-04-30 22:09:53.850 [main] INFO  ktor.application - Application auto-reloaded in 0.044 seconds.
+2022-04-30 22:09:55.920 [DefaultDispatcher-worker-1] INFO  lira.ahamdoun.utility.Log$Companion - JOB: Lira Job ENDED
+2022-04-30 22:09:59.122 [DefaultDispatcher-worker-2] INFO  ktor.application - Responding at http://0.0.0.0:8080
+2022-04-30 22:18:18.694 [DefaultDispatcher-worker-1] INFO  lira.ahamdoun.utility.Log$Companion - JOB: Lira Job STARTED
+2022-04-30 22:18:19.892 [DefaultDispatcher-worker-1] INFO  lira.ahamdoun.utility.Log$Companion - JOB: Lira Job ENDED

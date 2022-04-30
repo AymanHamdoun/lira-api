@@ -14,8 +14,7 @@ import java.util.logging.Logger
 import java.util.logging.SimpleFormatter
 
 fun main() {
-    Log.initLogger()
-    Log.logger?.log(Level.INFO, "Application Has Started")
+    Log.logger.info("Application Started")
 
     initScheduledJobs();
 
@@ -28,9 +27,9 @@ fun main() {
 fun initScheduledJobs() {
     GlobalScope.launch {
         while(true) {
-            Log.logger?.log(Level.INFO, "JOB: Lira Job STARTED")
+            Log.logger.info("JOB: Lira Job STARTED")
             LiraRateJob.getAndSaveJobData()
-            Log.logger?.log(Level.INFO, "JOB: Lira Job ENDED")
+            Log.logger.info("JOB: Lira Job ENDED")
 
             Thread.sleep(5 * 60 * 1000)
         }

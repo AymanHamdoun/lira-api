@@ -52,7 +52,7 @@ class LiraRatesController() {
         if (jobData == null || isOutdatedJobData(jobData)) {
             jobData = LiraRateJob.getAndSaveJobData()
             responseData.source = "Web Call"
-            Log.logger?.log(Level.INFO, "Had to issue a web call")
+            Log.logger.info("Had to issue a web call")
         }
 
         responseData.data = jobData

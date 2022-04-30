@@ -49,7 +49,7 @@ class LiraRateJob {
             try {
                 exchangeRates.add(getRatesFromLBPRatesWebsite())
             } catch (e: Exception) {
-                Log.logger?.log(Level.WARNING, e.message)
+                Log.logger.warn(e.message)
             }
 
             val jobData = LiraJobData(
