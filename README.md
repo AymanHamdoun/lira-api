@@ -9,6 +9,6 @@ LBP Rate API **practice project** to learn Kotlin
 - ✅ Implement an HTTP server using [Ktor](https://ktor.io/docs/welcome.html)
 - ✅ Serve the content of the JSON file to the `/rate` route
 - ✅ Have the scraping job run every 5 minutes
+- ✅ Implement some kind of logging to a third party log manager
 - Dockerize the project
-- Implement some kind of logging to a third party log manager
 - Run the project on kubernetes 
