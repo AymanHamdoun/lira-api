@@ -3,10 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Lira API</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+            color: white;
+        }
+
+        body {
+            background: #242729;
+        }
+
         .rate {
-            box-shadow: 10px 10px 10px #dcdcdc;
             padding: 10px 10px 20px 10px;
             border: 1px solid #dcdcdc;
             border-radius: 5px;
@@ -25,30 +36,86 @@
         .flex-container {
             display: flex; /* or inline-flex */
         }
+
+        #calculator {
+            width: 100%;
+        }
+        #calculator input {
+            background: #242729;
+            color: white;
+        }
+
+        #calculator input {
+            padding: 15px;
+            width: 45%;
+            border: none;
+            margin: 0;
+            border-bottom: 1px solid #333232;
+        }
+
+        #calculator button {
+            padding: 10px;
+            background: #234169;
+            font-weight: bold;
+            box-shadow: none;
+        }
     </style>
 </head>
 <body>
-    <h1>Lira API</h1>
-    <div id="rates"></div>
+    <h1 style="text-align: center">Lira API</h1>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus eum excepturi maxime odit repudiandae? Architecto fugiat illum iure labore libero molestias necessitatibus officia perferendis quia repellendus repudiandae, sit tempora, voluptates.
+    </p>
+    <div class="lbp">
+        <div id="calculator">
+            <form>
+                <input name="lbp" type="number" placeholder="LBP Amount">
+                <input name="usd" type="number" placeholder="Fresh USD Amount">
+            </form>
+        </div>
+        <div id="rates"></div>
+    </div>
 
     <script>
-        fetch("http://localhost:8080/rates").then((response) => {
-            return response.json()
-        }).then((response) => {
-            console.log(response.data);
-            response.data.rates.forEach((rates) => {
-                document.getElementById("rates").innerHTML = "" +
-                    "<div class=\"rate flex-container\">\n" +
-                    "        <h2 class='title'>"+rates.description+"</h2>" +
-                            "<div class='flex-container rate-body'>" +
-                            "        <div class=\"buy\">Buy: <span> "+rates.buy+"</span></div>\n" +
-                            "        <div class=\"sell\">Sell: <span>"+rates.sell+"</span></div>\n" +
-                            "        <a class=\"source\" href='"+rates.source+"'>"+rates.source+"</a>\n" +
-                            "        <div class=\"time\">Updated at: <span>"+response.data.job_run_time+"</span></div>\n" +
-                            "</div>"+
-                    "    </div>";
-            })
-        });
+        let liraData = {
+            buy: 0,
+            sell: 0,
+            loaded: false
+        }
+
+        window.onload = () => {
+            getLBPRates().then((response) => {
+                liraData.buy = parseInt(response.data.rates[0].buy.replace("1 USD at", "").replace("LBP", "").replace(",","").trim());
+                liraData.sell = parseInt(response.data.rates[0].sell.replace("1 USD at", "").replace("LBP", "").replace(",","").trim());
+                liraData.loaded = true;
+            }).then((r) => {
+                document.querySelector("input[name='lbp']").onchange = () => {
+                    let lbpVal = document.querySelector("input[name='lbp']").value;
+                    let rate = liraData.buy;
+                    document.querySelector("input[name='lbp']").value = lbpVal / rate;
+                }
+            });
+        }
+
+        const getLBPRates = () => {
+            return fetch("http://localhost:8080/rates").then((response) => {
+                return response.json()
+            }).then((response) => {
+                response.data.rates.forEach((rates) => {
+                    document.getElementById("rates").innerHTML = "" +
+                        "<div class=\"rate flex-container\">\n" +
+                        "        <h2 class='title'>"+rates.description+"</h2>" +
+                        "<div class='flex-container rate-body'>" +
+                        "        <div class=\"buy\">Buy: <span> "+rates.buy+"</span></div>\n" +
+                        "        <div class=\"sell\">Sell: <span>"+rates.sell+"</span></div>\n" +
+                        "        <a class=\"source\" href='"+rates.source+"'>"+rates.source+"</a>\n" +
+                        "        <div class=\"time\">Updated at: <span>"+response.data.job_run_time+"</span></div>\n" +
+                        "</div>"+
+                        "    </div>";
+                })
+                return response;
+            });
+        }
     </script>
 
 
