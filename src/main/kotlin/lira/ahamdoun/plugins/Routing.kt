@@ -1,19 +1,25 @@
 package lira.ahamdoun.plugins
 
 import io.ktor.server.routing.*
-import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
-import io.ktor.server.request.*
+import lira.ahamdoun.controller.LiraRatesController
+import java.io.File
 
 fun Application.configureRouting() {
 
     // Starting point for a Ktor app:
     routing {
         get("/") {
-            call.respondText("Hello World!")
+            call.respondFile(File("index.html"))
         }
     }
     routing {
+        get("/rates") {
+            call.respondText {
+                val controller = LiraRatesController()
+                controller.getLiraRate()
+            }
+        }
     }
 }
