@@ -92,7 +92,13 @@
                 document.querySelector("input[name='lbp']").onchange = () => {
                     let lbpVal = document.querySelector("input[name='lbp']").value;
                     let rate = liraData.buy;
-                    document.querySelector("input[name='lbp']").value = lbpVal / rate;
+                    document.querySelector("input[name='usd']").value = lbpVal / rate;
+                }
+
+                document.querySelector("input[name='usd']").onchange = () => {
+                    let usdVal = document.querySelector("input[name='usd']").value;
+                    let rate = liraData.sell;
+                    document.querySelector("input[name='lbp']").value = usdVal * rate;
                 }
             });
         }

@@ -12,7 +12,7 @@ class Log {
             val logger = Logger.getLogger(this::class.java.name)
             val simpleFormatter = SimpleFormatter()
 
-            val fileHandler = FileHandler("./lira-api.log")
+            val fileHandler = FileHandler("./lira-api.log", true)
             fileHandler.formatter = simpleFormatter
 
             logger.addHandler(fileHandler)

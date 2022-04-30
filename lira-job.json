@@ -1,12 +1,12 @@
 {
-    "job_run_time": "2022-04-30 19:36:43",
-    "job_run_time_s": 1651347403,
+    "job_run_time": "2022-04-30 20:27:33",
+    "job_run_time_s": 1651350453,
     "rates": [
         {
             "description": "LBP - Fresh USD Rate",
             "source": "https://lbprate.com/",
-            "buy": "1 USD at 26,750 LBP",
-            "sell": "1 USD at 26,700 LBP",
+            "buy": "1 USD at 26,650 LBP",
+            "sell": "1 USD at 26,600 LBP",
             "sourceCallTime": "1 Seconds"
         }
     ]
