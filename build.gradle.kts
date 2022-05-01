@@ -33,4 +33,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
 
     implementation("ch.qos.logback:logback-classic:$logback_version")
+
+    implementation("mysql:mysql-connector-java:8.0.15")
+
 }
