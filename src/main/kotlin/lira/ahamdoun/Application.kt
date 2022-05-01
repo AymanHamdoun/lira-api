@@ -7,6 +7,7 @@ import kotlinx.coroutines.launch
 import lira.ahamdoun.jobs.LiraRateJob
 import lira.ahamdoun.models.User
 import lira.ahamdoun.plugins.configureRouting
+import lira.ahamdoun.repositories.UserRepository
 import lira.ahamdoun.utility.Database
 import lira.ahamdoun.utility.Log
 import java.lang.Exception
@@ -16,6 +17,14 @@ import java.util.logging.Logger
 import java.util.logging.SimpleFormatter
 
 fun main() {
+    val repo = UserRepository()
+
+    val user = repo.getByID(1)
+    val user2 = repo.getByAuthKey("coiyubfcqcqeuigcqfuwdwd")
+
+    println("REPO user By ID: " + user.getName())
+    println("REPO user By Auth Key: " + user2.getName())
+
     Log.logger.info("Application Started")
 
     initScheduledJobs();

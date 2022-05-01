@@ -36,7 +36,7 @@ class Database {
             return connection
         }
 
-        fun select(sql: String, statementHandler: (statement: PreparedStatement) -> PreparedStatement, resultRowHandler: (resultSet: ResultSet) -> Unit): ResultSet {
+        fun select(sql: String, statementHandler: (statement: PreparedStatement) -> PreparedStatement, resultRowHandler: (resultSet: ResultSet) -> Unit) {
             val connection = getConnection() ?: throw Exception("Could not establish database connection")
 
             var statement = connection.prepareStatement(sql)
@@ -49,7 +49,6 @@ class Database {
             resultSet.close()
             statement.close()
             connection.close()
-            return resultSet
         }
     }
 }
