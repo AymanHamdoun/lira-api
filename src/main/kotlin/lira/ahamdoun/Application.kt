@@ -5,6 +5,7 @@ import io.ktor.server.netty.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import lira.ahamdoun.jobs.LiraRateJob
+import lira.ahamdoun.models.User
 import lira.ahamdoun.plugins.configureRouting
 import lira.ahamdoun.utility.Database
 import lira.ahamdoun.utility.Log
@@ -15,7 +16,6 @@ import java.util.logging.Logger
 import java.util.logging.SimpleFormatter
 
 fun main() {
-    Database.getConnection()
     Log.logger.info("Application Started")
 
     initScheduledJobs();
