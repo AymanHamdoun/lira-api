@@ -55,3 +55,5 @@ kotlinx.coroutines.JobCancellationException: Job was cancelled
 2022-05-01 18:55:52.591 [main] INFO  ktor.application - Application auto-reloaded in 0.061 seconds.
 2022-05-01 18:55:54.645 [DefaultDispatcher-worker-1] INFO  lira.ahamdoun.utility.Log$Companion - JOB: Lira Job ENDED
 2022-05-01 18:55:57.861 [DefaultDispatcher-worker-2] INFO  ktor.application - Responding at http://0.0.0.0:8080
+2022-05-01 19:00:54.651 [DefaultDispatcher-worker-1] INFO  lira.ahamdoun.utility.Log$Companion - JOB: Lira Job STARTED
+2022-05-01 19:00:55.907 [DefaultDispatcher-worker-1] INFO  lira.ahamdoun.utility.Log$Companion - JOB: Lira Job ENDED

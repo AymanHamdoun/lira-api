@@ -1,4 +1,4 @@
-FROM arm64v8/openjdk:19
+FROM openjdk:19
 
 WORKDIR /app
 
