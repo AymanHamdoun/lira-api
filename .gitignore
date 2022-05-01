@@ -36,3 +36,4 @@ out/
 .vscode/
 lira-api.log
 lira-job.json
+.env
