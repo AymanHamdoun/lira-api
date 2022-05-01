@@ -5,7 +5,7 @@ LBP Rate API **practice project** to learn Kotlin
 
 ## Main Tasks To Practice
 - ✅ scrape LBP Rate using [Jsoup](https://jsoup.org/)
-- ✅ Store the data in a json file
+- ✅ Store & retrieve the data from a json file (by serializing data classes to json using [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization))
 - ✅ Implement an HTTP server using [Ktor](https://ktor.io/docs/welcome.html)
 - ✅ Serve the content of the JSON file to the `/rate` route
 - ✅ Have the scraping job run every 5 minutes
