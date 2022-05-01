@@ -34,3 +34,5 @@ out/
 
 ### VS Code ###
 .vscode/
+lira-api.log
+lira-job.json
