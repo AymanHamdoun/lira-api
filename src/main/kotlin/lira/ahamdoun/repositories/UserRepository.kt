@@ -6,14 +6,15 @@ import java.sql.ResultSet
 
 class UserRepository : BaseRepository() {
 
+    private val COLUMN_ID = "id";
     private val COLUMN_AUTH_KEY = "auth_key";
 
     fun getByID(id: Int): User {
-        return getByIntColumn("id", id) as User
+        return getFirstByColumn(this.COLUMN_ID, id) as User
     }
 
     fun getByAuthKey(authKey: String): User {
-        return getByStringColumn(this.COLUMN_AUTH_KEY, authKey) as User
+        return getFirstByColumn(this.COLUMN_AUTH_KEY, authKey) as User
     }
 
     override fun getBaseSelectQuery(): String {

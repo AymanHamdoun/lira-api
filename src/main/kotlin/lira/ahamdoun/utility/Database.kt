@@ -50,5 +50,38 @@ class Database {
             statement.close()
             connection.close()
         }
+
+        fun fillPreparedStatementWithMapConditions(statement: PreparedStatement, conditions: Map<String, Any>) {
+            var colIndex = 1;
+            for( (_, columnValue) in conditions.entries) {
+                when (columnValue) {
+                    is String -> {
+                        statement.setString(colIndex++, columnValue.toString())
+                    }
+                    is Int -> {
+                        statement.setInt(colIndex++, columnValue.toString().toInt())
+                    }
+                    is Double -> {
+                        statement.setDouble(colIndex++, columnValue.toString().toDouble())
+                    }
+                }
+            }
+        }
+
+        fun getWhereConditionStringFromMap(conditions: Map<String, Any>, conditionsAreAnded: Boolean = true): String {
+            if (conditions.isEmpty()) {
+                return ""
+            }
+
+            val separator = if (conditionsAreAnded) " AND " else " OR "
+
+            val conditionStrings: MutableList<String> = mutableListOf()
+
+            for( (key, _) in conditions.entries) {
+                conditionStrings.add("$key=?")
+            }
+
+            return "WHERE " + conditionStrings.joinToString(separator)
+        }
     }
 }
