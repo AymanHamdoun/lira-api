@@ -2,7 +2,6 @@ package lira.ahamdoun.repositories
 
 import lira.ahamdoun.models.BaseModel
 import lira.ahamdoun.utility.Database
-import java.sql.PreparedStatement
 import java.sql.ResultSet
 
 abstract class BaseRepository {
@@ -12,41 +11,30 @@ abstract class BaseRepository {
     protected fun getFirstByColumn(columnName: String, columnValue: Any): BaseModel? {
         var model: BaseModel? = null
 
-        Database.select(getBaseSelectQuery() + " WHERE $columnName = ?", { statement ->
-            Database.fillPreparedStatementWithMapConditions(statement, mapOf(
-                columnName to columnValue
-            ))
-            statement
-        }, { resultSet ->
+        Database.select(getBaseSelectQuery() + " WHERE $columnName = ?", mapOf(columnName to columnValue)) { resultSet ->
             model = getObjectFromResultSet(resultSet)
-        })
+        }
 
         return model
     }
 
     fun getAll(): MutableList<BaseModel> {
-        return getAllByPreparedStatement(getBaseSelectQuery()) { statement -> statement }
+        return getModels(getBaseSelectQuery())
     }
 
-    fun getAll(conditions: Map<String, Any>): MutableList<BaseModel> {
-        val whereCondition = Database.getWhereConditionStringFromMap(conditions)
+    fun getAll(conditions: Map<String, Any>, isAnded: Boolean = true): MutableList<BaseModel> {
+        val whereCondition = Database.getWhereConditionStringFromMap(conditions, isAnded)
         val sql = getBaseSelectQuery() + " " + whereCondition
-        return getAllByPreparedStatement(sql) { statement ->
-            Database.fillPreparedStatementWithMapConditions(statement, conditions)
-            statement
-        }
+        return getModels(sql, conditions)
     }
 
-    private fun getAllByPreparedStatement(sql: String, statementHandler: (statement: PreparedStatement) -> PreparedStatement): MutableList<BaseModel> {
+    private fun getModels(sql: String, parameters: Map<String, Any> = mapOf()): MutableList<BaseModel> {
         val models: MutableList<BaseModel> = mutableListOf()
 
-        Database.select(sql, { statement ->
-            statementHandler(statement)
-            statement
-        }, { resultSet ->
+        Database.select(sql, parameters) { resultSet ->
             val model = getObjectFromResultSet(resultSet)
             models.add(model)
-        })
+        }
 
         return models
     }

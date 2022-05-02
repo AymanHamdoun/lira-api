@@ -36,11 +36,11 @@ class Database {
             return connection
         }
 
-        fun select(sql: String, statementHandler: (statement: PreparedStatement) -> PreparedStatement, resultRowHandler: (resultSet: ResultSet) -> Unit) {
+        fun select(sql: String, parameters: Map<String, Any>, resultRowHandler: (resultSet: ResultSet) -> Unit) {
             val connection = getConnection() ?: throw Exception("Could not establish database connection")
 
-            var statement = connection.prepareStatement(sql)
-            statement = statementHandler(statement)
+            val statement = connection.prepareStatement(sql)
+            fillPreparedStatementWithMapParameters(statement, parameters)
 
             val resultSet = statement.executeQuery()
             while(resultSet.next()) {
@@ -51,9 +51,9 @@ class Database {
             connection.close()
         }
 
-        fun fillPreparedStatementWithMapConditions(statement: PreparedStatement, conditions: Map<String, Any>) {
+        private fun fillPreparedStatementWithMapParameters(statement: PreparedStatement, parameters: Map<String, Any>) {
             var colIndex = 1;
-            for( (_, columnValue) in conditions.entries) {
+            for( (_, columnValue) in parameters.entries) {
                 when (columnValue) {
                     is String -> {
                         statement.setString(colIndex++, columnValue.toString())

@@ -6,9 +6,18 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import lira.ahamdoun.jobs.LiraRateJob
 import lira.ahamdoun.plugins.configureRouting
+import lira.ahamdoun.repositories.UserRepository
 import lira.ahamdoun.utility.Log
 
 fun main() {
+    val repo = UserRepository()
+    val user1 = repo.getByID(1)
+    val user2 = repo.getByAuthKey("coiyubfcqcqeuigcqfuwdwd")
+    val users1 = repo.getAll()
+    val users2 = repo.getAll(mapOf(
+        "name" to "Ayman Hamdoun"
+    ))
+
     Log.logger.info("Application Started")
 
     initScheduledJobs();
