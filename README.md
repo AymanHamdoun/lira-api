@@ -12,6 +12,7 @@ LBP Rate API **practice project** to learn Kotlin
 - ✅ Implement logging using [Logback](https://logback.qos.ch/) through [SLF4J](https://www.slf4j.org/) (which comes already with Ktor)
 - ✅ Dockerize the project
 - ✅ Implement Basic Database functionality (With Repositories & Models)
+- Return Updated at for /rates based on timezone of the client
 - Add a cache layer (preferably Redis) to the Repository Getters 
 - Allow User Registration and give them Auth Keys
 - Only Accept GET requests if a valid Auth key exists in a certain header
