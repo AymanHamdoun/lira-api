@@ -59,10 +59,10 @@ class Database {
                         statement.setString(colIndex++, columnValue.toString())
                     }
                     is Int -> {
-                        statement.setInt(colIndex++, Int.toString().toInt())
+                        statement.setInt(colIndex++, columnValue.toString().toInt())
                     }
                     is Double -> {
-                        statement.setDouble(colIndex++, Int.toString().toDouble())
+                        statement.setDouble(colIndex++, columnValue.toString().toDouble())
                     }
                 }
             }
