@@ -2,12 +2,10 @@ package lira.ahamdoun.utility
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import java.lang.Exception
-import java.sql.Connection
-import java.sql.DriverManager
-import java.sql.PreparedStatement
-import java.sql.ResultSet
+import java.sql.*
 import java.util.*
+
+data class InsertResult(val succeeded: Boolean, val affectedRowCount: Int, val lastInsertID: Long?)
 
 class Database {
     companion object {
@@ -49,6 +47,23 @@ class Database {
             resultSet.close()
             statement.close()
             connection.close()
+        }
+
+        fun insert(sql: String, parameters: Map<String, Any>): InsertResult {
+            val connection = getConnection() ?: throw Exception("Could not establish database connection")
+            val statement = connection.prepareStatement(sql)
+            fillPreparedStatementWithMapParameters(statement, parameters)
+            val affectedRowCount = statement.executeUpdate()
+            val lastInsertID: Long?
+            statement.generatedKeys.use { generatedKeys ->
+                if (generatedKeys.next()) {
+                    lastInsertID = generatedKeys.getLong(1)
+                } else {
+                    throw SQLException("Creating record failed, no ID obtained.")
+                }
+            }
+
+            return InsertResult((affectedRowCount > 0), affectedRowCount, lastInsertID)
         }
 
         private fun fillPreparedStatementWithMapParameters(statement: PreparedStatement, parameters: Map<String, Any>) {
