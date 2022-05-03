@@ -79,3 +79,16 @@
 2022-05-02 10:51:59.725 [main] INFO  lira.ahamdoun.utility.Log$Companion - Application Started
 2022-05-02 11:01:09.387 [main] INFO  lira.ahamdoun.utility.Log$Companion - Application Started
 2022-05-02 14:08:08.697 [main] INFO  lira.ahamdoun.utility.Log$Companion - Application Started
+2022-05-03 09:52:21.525 [main] INFO  lira.ahamdoun.utility.Log$Companion - Application Started
+2022-05-03 09:52:21.591 [DefaultDispatcher-worker-1] INFO  lira.ahamdoun.utility.Log$Companion - JOB: Lira Job STARTED
+2022-05-03 09:52:21.688 [main] INFO  ktor.application - Autoreload is disabled because the development mode is off.
+2022-05-03 09:52:21.734 [main] INFO  ktor.application - Application auto-reloaded in 0.045 seconds.
+2022-05-03 09:52:22.034 [DefaultDispatcher-worker-2] INFO  ktor.application - Responding at http://0.0.0.0:8080
+2022-05-03 09:52:23.958 [DefaultDispatcher-worker-1] INFO  lira.ahamdoun.utility.Log$Companion - JOB: Lira Job ENDED
+2022-05-03 09:54:50.147 [main] INFO  lira.ahamdoun.utility.Log$Companion - Application Started
+2022-05-03 09:54:50.283 [DefaultDispatcher-worker-1] INFO  lira.ahamdoun.utility.Log$Companion - JOB: Lira Job STARTED
+2022-05-03 09:54:50.392 [main] INFO  ktor.application - Autoreload is disabled because the development mode is off.
+2022-05-03 09:54:50.460 [main] INFO  ktor.application - Application auto-reloaded in 0.067 seconds.
+2022-05-03 09:54:50.855 [DefaultDispatcher-worker-2] INFO  ktor.application - Responding at http://0.0.0.0:8080
+2022-05-03 09:54:52.361 [DefaultDispatcher-worker-1] INFO  lira.ahamdoun.utility.Log$Companion - JOB: Lira Job ENDED
+2022-05-03 10:19:39.234 [DefaultDispatcher-worker-1] INFO  lira.ahamdoun.utility.Log$Companion - JOB: Lira Job STARTED

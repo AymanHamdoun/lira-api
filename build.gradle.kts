@@ -36,4 +36,7 @@ dependencies {
 
     implementation("mysql:mysql-connector-java:8.0.15")
 
+    // https://mvnrepository.com/artifact/commons-codec/commons-codec
+    implementation("commons-codec:commons-codec:1.5")
+
 }
