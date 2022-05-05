@@ -3,12 +3,15 @@ package lira.ahamdoun.repositories
 import lira.ahamdoun.models.BaseModel
 import lira.ahamdoun.models.User
 import lira.ahamdoun.utility.Database
+import lira.ahamdoun.utility.InsertResult
 import java.sql.ResultSet
 
 class UserRepository : BaseRepository() {
 
     private val COLUMN_ID = "id";
     private val COLUMN_AUTH_KEY = "auth_key";
+
+    override fun getTableName(): String {return "users"}
 
     fun getByID(id: Int): User {
         return getFirstByColumn(this.COLUMN_ID, id) as User
@@ -18,17 +21,13 @@ class UserRepository : BaseRepository() {
         return getFirstByColumn(this.COLUMN_AUTH_KEY, authKey) as User
     }
 
-    fun saveNew(user: User) {
-        val sql = "INSERT INTO users (name, email, auth_key, confirmation_hash) VALUES (?, ?, ?, ?)"
-
-        val params = mapOf<String, Any>(
+    fun saveNew(user: User): InsertResult {
+        return save(mapOf<String, Any>(
             "name" to user.getName(),
             "email" to user.getEmail(),
             "auth_key" to user.getAuthKey(),
             "confirmation_hash" to user.getConfirmationHash()
-        )
-
-        val result = Database.insert(sql, params)
+        ))
     }
 
     override fun getBaseSelectQuery(): String {
