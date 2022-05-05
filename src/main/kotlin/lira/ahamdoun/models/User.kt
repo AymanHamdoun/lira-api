@@ -16,4 +16,5 @@ class User (
     fun getEmail(): String {return email}
     fun getAuthKey(): String {return authKey}
     fun isEmailConfirmed(): Boolean {return status}
+    fun getConfirmationHash(): String {return confirmationHash}
 }

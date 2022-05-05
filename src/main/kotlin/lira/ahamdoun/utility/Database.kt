@@ -51,7 +51,7 @@ class Database {
 
         fun insert(sql: String, parameters: Map<String, Any>): InsertResult {
             val connection = getConnection() ?: throw Exception("Could not establish database connection")
-            val statement = connection.prepareStatement(sql)
+            val statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)
             fillPreparedStatementWithMapParameters(statement, parameters)
             val affectedRowCount = statement.executeUpdate()
             val lastInsertID: Long?

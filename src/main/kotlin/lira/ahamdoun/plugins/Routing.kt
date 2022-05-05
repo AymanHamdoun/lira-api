@@ -15,17 +15,14 @@ fun Application.configureRouting() {
         get("/") {
             call.respondFile(File("index.html"))
         }
-    }
-    routing {
+
         get("/rates") {
             call.respondText {
                 val controller = LiraRatesController()
                 controller.getLiraRate()
             }
         }
-    }
 
-    routing {
         post("/users/store") {
             call.respondText {
                 val params = call.receiveParameters()
