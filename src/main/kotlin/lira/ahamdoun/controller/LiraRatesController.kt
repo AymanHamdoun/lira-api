@@ -64,6 +64,6 @@ class LiraRatesController(parameters: Parameters) : BaseController(parameters) {
     }
 
     private fun isOutdatedJobData(jobData: LiraJobData): Boolean {
-        return false && ((LocalDateTime.now().toEpochSecond(ZoneOffset.UTC) - jobData.jobStartTimeInSeconds) > 60 * 5)
+        return ((LocalDateTime.now().toEpochSecond(ZoneOffset.UTC) - jobData.jobStartTimeInSeconds) > 60 * 5)
     }
 }
