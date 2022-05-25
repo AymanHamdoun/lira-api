@@ -30,6 +30,20 @@ abstract class BaseRepository {
         return getModels(sql, conditions)
     }
 
+    protected fun update(data: Map<String, Any>, conditions: Map<String, Any>, conditionsAreAnded: Boolean = true): Boolean {
+        val whereCondition = Database.getWhereConditionStringFromMap(conditions, conditionsAreAnded)
+
+        val setStrings = mutableListOf<String>()
+
+        for (entry in data.entries.iterator()) {
+            setStrings.add("${entry.key}=?")
+        }
+
+        val sql = "UPDATE ${getTableName()} SET " + setStrings.joinToString(",") + " $whereCondition"
+
+        return Database.update(sql, data, conditions)
+    }
+
     protected fun save(data: Map<String, Any>): InsertResult {
         val questionMarks = Array<String>(data.size) { "?" }.joinToString(",")
         val sql = "INSERT INTO ${getTableName()} (${data.keys.joinToString(",")}) VALUES ($questionMarks)"

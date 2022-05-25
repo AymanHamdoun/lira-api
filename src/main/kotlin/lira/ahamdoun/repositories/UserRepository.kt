@@ -10,15 +10,24 @@ class UserRepository : BaseRepository() {
 
     private val COLUMN_ID = "id";
     private val COLUMN_AUTH_KEY = "auth_key";
+    private val COLUMN_CONFIRMATION_HASH = "confirmation_hash";
 
     override fun getTableName(): String {return "users"}
 
-    fun getByID(id: Int): User {
-        return getFirstByColumn(this.COLUMN_ID, id) as User
+    fun getByID(id: Int): User? {
+        return getFirstByColumn(this.COLUMN_ID, id) as User?
     }
 
-    fun getByAuthKey(authKey: String): User {
-        return getFirstByColumn(this.COLUMN_AUTH_KEY, authKey) as User
+    fun getByAuthKey(authKey: String): User? {
+        return getFirstByColumn(this.COLUMN_AUTH_KEY, authKey) as User?
+    }
+
+    fun getByConfirmationHash(confirmationHash: String): User? {
+        return getFirstByColumn(this.COLUMN_CONFIRMATION_HASH, confirmationHash) as User?
+    }
+
+    fun activate(user: User): Boolean {
+        return update(mapOf("status" to true), mapOf("id" to user.getID()))
     }
 
     fun saveNew(user: User): InsertResult {

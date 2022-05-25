@@ -16,8 +16,8 @@ abstract class Response {
 
 class GeneralResponse(val response: GeneralResponseData) : Response() {
     companion object {
-        fun ok(): GeneralResponse {
-            return GeneralResponse(GeneralResponseData(GeneralResponseData.STATUS_OK, 200, GeneralResponseData.MSG_SUCCESS))
+        fun ok(msg: String = GeneralResponseData.MSG_SUCCESS): GeneralResponse {
+            return GeneralResponse(GeneralResponseData(GeneralResponseData.STATUS_OK, 200, msg))
         }
 
         fun error(msg: String = GeneralResponseData.MSG_ERROR, code: Int = 500) : GeneralResponse {

@@ -66,8 +66,17 @@ class Database {
             return InsertResult((affectedRowCount > 0), affectedRowCount, lastInsertID)
         }
 
-        private fun fillPreparedStatementWithMapParameters(statement: PreparedStatement, parameters: Map<String, Any>) {
-            var colIndex = 1;
+        fun update(sql: String, parameters: Map<String, Any>, conditions: Map<String, Any>) : Boolean {
+            val connection = getConnection() ?: throw Exception("Could not establish database connection")
+            val statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)
+            fillPreparedStatementWithMapParameters(statement, parameters)
+            fillPreparedStatementWithMapParameters(statement, conditions, parameters.size + 1)
+            val affectedRowCount = statement.executeUpdate()
+            return affectedRowCount > 0
+        }
+
+        private fun fillPreparedStatementWithMapParameters(statement: PreparedStatement, parameters: Map<String, Any>, offset: Int = 1) {
+            var colIndex = offset;
             for( (_, columnValue) in parameters.entries) {
                 when (columnValue) {
                     is String -> {
@@ -78,6 +87,9 @@ class Database {
                     }
                     is Double -> {
                         statement.setDouble(colIndex++, columnValue.toString().toDouble())
+                    }
+                    is Boolean -> {
+                        statement.setBoolean(colIndex++, columnValue.toString().toBoolean())
                     }
                 }
             }

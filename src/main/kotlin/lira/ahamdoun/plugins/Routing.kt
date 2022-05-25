@@ -24,6 +24,14 @@ fun Application.configureRouting() {
             }
         }
 
+        get("/activation") {
+            call.respondText {
+                val params = call.request.queryParameters
+                val controller = UserController(params)
+                controller.activate()
+            }
+        }
+
         post("/users/store") {
             call.respondText {
                 val params = call.receiveParameters()
