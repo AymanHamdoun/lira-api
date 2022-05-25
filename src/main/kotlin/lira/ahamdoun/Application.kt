@@ -6,7 +6,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import lira.ahamdoun.jobs.LiraRateJob
 import lira.ahamdoun.plugins.configureRouting
-import lira.ahamdoun.repositories.UserRepository
 import lira.ahamdoun.utility.Log
 
 fun main() {
