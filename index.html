@@ -47,7 +47,7 @@
 
         #calculator input {
             padding: 15px;
-            width: 45%;
+            width: 35%;
             border: none;
             margin: 0;
             border-bottom: 1px solid #333232;
@@ -69,8 +69,11 @@
     <div class="lbp">
         <div id="calculator">
             <form>
-                <input name="lbp" type="number" placeholder="LBP Amount">
-                <input name="usd" type="number" placeholder="Fresh USD Amount">
+                <label for="lbpInput">LBP Amount</label>
+                <input id="lbpInput" name="lbp" type="number" placeholder="LBP Amount">
+
+                <label for="usdInput">USD Amount</label>
+                <input id="usdInput" name="usd" type="number" placeholder="Fresh USD Amount">
             </form>
         </div>
         <div id="rates"></div>
@@ -88,14 +91,18 @@
                 liraData.buy = parseInt(response.data.rates[0].buy.replace("1 USD at", "").replace("LBP", "").replace(",","").trim());
                 liraData.sell = parseInt(response.data.rates[0].sell.replace("1 USD at", "").replace("LBP", "").replace(",","").trim());
                 liraData.loaded = true;
-            }).then((r) => {
-                document.querySelector("input[name='lbp']").onchange = () => {
+            });
+
+            document.querySelector("input[name='lbp']").addEventListener('keyup', () => {
+                if (liraData.loaded) {
                     let lbpVal = document.querySelector("input[name='lbp']").value;
                     let rate = liraData.buy;
                     document.querySelector("input[name='usd']").value = lbpVal / rate;
                 }
+            });
 
-                document.querySelector("input[name='usd']").onchange = () => {
+            document.querySelector("input[name='usd']").addEventListener('keyup', () => {
+                if (liraData.loaded) {
                     let usdVal = document.querySelector("input[name='usd']").value;
                     let rate = liraData.sell;
                     document.querySelector("input[name='lbp']").value = usdVal * rate;
@@ -104,7 +111,7 @@
         }
 
         const getLBPRates = () => {
-            return fetch("https://lira-api.ahamdoun.cloud/rates").then((response) => {
+            return fetch("http://localhost:8080/rates").then((response) => {
                 return response.json()
             }).then((response) => {
                 response.data.rates.forEach((rates) => {

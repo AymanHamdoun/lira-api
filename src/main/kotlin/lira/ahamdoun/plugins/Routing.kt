@@ -18,7 +18,8 @@ fun Application.configureRouting() {
 
         get("/rates") {
             call.respondText {
-                val controller = LiraRatesController()
+                val params = call.request.queryParameters
+                val controller = LiraRatesController(params)
                 controller.getLiraRate()
             }
         }
@@ -26,8 +27,8 @@ fun Application.configureRouting() {
         post("/users/store") {
             call.respondText {
                 val params = call.receiveParameters()
-                val controller = UserController()
-                controller.register(params)
+                val controller = UserController(params)
+                controller.register()
             }
         }
     }

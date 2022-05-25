@@ -15,7 +15,7 @@ fun main() {
     initScheduledJobs();
 
     embeddedServer(Netty, port = 8080) {
-       configureRouting();
+       configureRouting()
     }.start(wait = true)
 }
 

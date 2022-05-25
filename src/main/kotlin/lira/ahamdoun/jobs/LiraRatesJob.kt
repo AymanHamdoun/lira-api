@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter
 @Serializable
 data class LiraJobData (
     @SerialName("job_run_time")
-    val jobStartTime: String,
+    var jobStartTime: String,
 
     @SerialName("job_run_time_s")
     val jobStartTimeInSeconds: Long,

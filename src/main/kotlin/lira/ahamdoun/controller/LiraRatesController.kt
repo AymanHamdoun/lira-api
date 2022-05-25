@@ -1,17 +1,17 @@
 package lira.ahamdoun.controller
 
-import lira.ahamdoun.jobs.LiraJobData
-import lira.ahamdoun.jobs.LiraRateJob
+import io.ktor.http.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import lira.ahamdoun.jobs.LiraJobData
+import lira.ahamdoun.jobs.LiraRateJob
 import lira.ahamdoun.utility.Log
 import java.io.File
-import java.lang.Exception
 import java.time.LocalDateTime
 import java.time.ZoneOffset
-import java.util.logging.Level
+
 
 @Serializable
 data class ErrorResponse (val status: Int, val message: String)
@@ -19,7 +19,7 @@ data class ErrorResponse (val status: Int, val message: String)
 @Serializable
 data class LiraRateResponse(val status: Int, var source: String, var data: LiraJobData?)
 
-class LiraRatesController() {
+class LiraRatesController(parameters: Parameters) : BaseController(parameters) {
 
     private val json = Json {
         prettyPrint = true
@@ -30,6 +30,11 @@ class LiraRatesController() {
         return try {
             val responseData = LiraRateResponse(200, "Cache", null)
             fillResponseData(responseData)
+
+            if (responseData.data == null) {
+                return json.encodeToString(ErrorResponse(500, "LBP Rate Data Not Found"))
+            }
+
             json.encodeToString(responseData)
         } catch (e: Exception) {
             println(e.stackTraceToString())
@@ -59,6 +64,6 @@ class LiraRatesController() {
     }
 
     private fun isOutdatedJobData(jobData: LiraJobData): Boolean {
-        return ((LocalDateTime.now().toEpochSecond(ZoneOffset.UTC) - jobData.jobStartTimeInSeconds) > 60 * 5)
+        return false && ((LocalDateTime.now().toEpochSecond(ZoneOffset.UTC) - jobData.jobStartTimeInSeconds) > 60 * 5)
     }
 }
